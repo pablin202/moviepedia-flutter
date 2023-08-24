@@ -1,5 +1,5 @@
 import '../entities/movie.dart';
 
 abstract class MovieDatasource {
-  Future<List<Movie>> getNewPlaying({int page = 1});
+  Future<List<Movie>> getNowPlaying({int page = 1});
 }
