@@ -4,6 +4,7 @@ import 'package:moviepedia/presentation/providers/movies/movies_providers.dart';
 import 'package:moviepedia/presentation/providers/movies/movies_slideshow_provider.dart';
 import 'package:moviepedia/presentation/widgets/movies/movies_slideshow.dart';
 import 'package:moviepedia/presentation/widgets/shared/custom_app_bar.dart';
+import 'package:moviepedia/presentation/widgets/shared/custom_bottom_navigation_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = 'home-screen';
@@ -12,7 +13,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: _HomeView());
+    return const Scaffold(
+      body: _HomeView(),
+      bottomNavigationBar: CustomBottomNavigationBar(),
+    );
   }
 }
 
