@@ -53,53 +53,56 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final upcoming = ref.watch(upcomingProvider);
     final slideMovies = ref.watch(moviesSlideshowProvider);
 
-    return CustomScrollView(
-      slivers: [
-        const SliverAppBar(
-          floating: true,
-          flexibleSpace: FlexibleSpaceBar(title: CustomAppBar()),
-        ),
-        SliverList(
-            delegate: SliverChildBuilderDelegate((context, index) {
-          return Column(
-            children: [
-              MoviesSlideshow(movies: slideMovies),
-              MovieHorizontalListView(
-                movies: nowPlaying,
-                title: 'Cinema',
-                subTitle: DateFormat('EEEE, d MMM').format(DateTime.now()),
-                loadNextPage: () {
-                  ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
-                },
-              ),
-              MovieHorizontalListView(
-                movies: popular,
-                title: 'Popular',
-                subTitle: null,
-                loadNextPage: () {
-                  ref.read(popularProvider.notifier).loadNextPage();
-                },
-              ),
-              MovieHorizontalListView(
-                movies: topRated,
-                title: 'Top Rated',
-                subTitle: null,
-                loadNextPage: () {
-                  ref.read(topRatedProvider.notifier).loadNextPage();
-                },
-              ),
-              MovieHorizontalListView(
-                movies: upcoming,
-                title: 'Upcoming',
-                subTitle: null,
-                loadNextPage: () {
-                  ref.read(upcomingProvider.notifier).loadNextPage();
-                },
-              )
-            ],
-          );
-        }, childCount: 1))
-      ],
+    return Visibility(
+      visible: !initialLoading,
+      child: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            floating: true,
+            flexibleSpace: FlexibleSpaceBar(title: CustomAppBar()),
+          ),
+          SliverList(
+              delegate: SliverChildBuilderDelegate((context, index) {
+            return Column(
+              children: [
+                MoviesSlideshow(movies: slideMovies),
+                MovieHorizontalListView(
+                  movies: nowPlaying,
+                  title: 'Cinema',
+                  subTitle: DateFormat('EEEE, d MMM').format(DateTime.now()),
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  },
+                ),
+                MovieHorizontalListView(
+                  movies: popular,
+                  title: 'Popular',
+                  subTitle: null,
+                  loadNextPage: () {
+                    ref.read(popularProvider.notifier).loadNextPage();
+                  },
+                ),
+                MovieHorizontalListView(
+                  movies: topRated,
+                  title: 'Top Rated',
+                  subTitle: null,
+                  loadNextPage: () {
+                    ref.read(topRatedProvider.notifier).loadNextPage();
+                  },
+                ),
+                MovieHorizontalListView(
+                  movies: upcoming,
+                  title: 'Upcoming',
+                  subTitle: null,
+                  loadNextPage: () {
+                    ref.read(upcomingProvider.notifier).loadNextPage();
+                  },
+                )
+              ],
+            );
+          }, childCount: 1))
+        ],
+      ),
     );
   }
 }
