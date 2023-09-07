@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:moviepedia/config/helpers/human_format.dart';
 import 'package:moviepedia/domain/entities/movie.dart';
 
@@ -104,7 +105,9 @@ class _SlideState extends State<_Slide> {
                       strokeWidth: 2,
                     );
                   }
-                  return FadeIn(child: child);
+                  return GestureDetector(
+                      onTap: () => context.push('/movie/${widget.movie.id}'),
+                      child: FadeIn(child: child));
                 },
               ),
             ),
