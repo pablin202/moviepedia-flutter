@@ -16,7 +16,7 @@ class MovieMapper {
       popularity: moviedb.popularity,
       posterPath: (moviedb.posterPath != '')
           ? 'https://image.tmdb.org/t/p/w500${moviedb.posterPath}'
-          : 'no-poster',
+          : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqPJ_pVKyIaIj_6G4mjTbdmM2MVZm9nOFaG233CBnr31mS-JwW-sJ6yzAuLKLN7ME2y4c&usqp=CAU',
       releaseDate: moviedb.releaseDate,
       title: moviedb.title,
       video: moviedb.video,
