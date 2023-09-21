@@ -106,7 +106,8 @@ class _SlideState extends State<_Slide> {
                     );
                   }
                   return GestureDetector(
-                      onTap: () => context.push('/movie/${widget.movie.id}'),
+                      onTap: () =>
+                          context.push('/home/0/movie/${widget.movie.id}'),
                       child: FadeIn(child: child));
                 },
               ),
